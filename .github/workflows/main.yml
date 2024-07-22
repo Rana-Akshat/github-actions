@@ -33,8 +33,6 @@ jobs:
         ECR_REPOSITORY: docker-image-repository
         IMAGE_TAG: ${{ steps.docker-tag.outputs.tag }}
       run: |
-          echo $ECR_REGISTRY
-          echo $ECR_REPOSITORY
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
