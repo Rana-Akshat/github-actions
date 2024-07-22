@@ -1,0 +1,21 @@
+name: Build & push to AWS ECR
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  Build-and-push:
+    runs-on: windows-latest
+
+    steps:
+    -  name: checkout code
+       uses: actions/checkout@v2
+
+    -  name: configure aws credentials
+       uses: aws-actions/configure-aws-credentials@v1
+       with:
+         aws-access-key-id: ${{ secrets
+       
+    
+  
