@@ -23,11 +23,24 @@ jobs:
        id: ecr-login
        uses: aws-actions/amazon-ecr-login@v1
 
-    -  name: Get version from version file
-       id: get-version
-       run:
-         if [ -f VERSION ]; then
-           VERSION=$(cat VERSION)
+    - id: docker-tag
+      uses: yuya-takeyama/docker-tag-from-github-ref-action@v1
+
+    - name: Build docker image
+      id: docker-build
+      env:
+        ECR-REGISTRY: ${{ steps.ecr-login.outputs.registry }}
+        ECR-REPOSITORY: docker-image-repository
+        IMAGE_TAG: ${{ steps.docker-tag.outputs.tag }}
+      run: |
+          echo $ECR_REGISTRY
+          echo $ECR_REPOSITORY
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+        
+
+
        
     
   
