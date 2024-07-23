@@ -24,14 +24,14 @@ jobs:
        uses: aws-actions/amazon-ecr-login@v1
 
     - name: Build docker image
-      id: docker-build
+      working-directory: ./app
       env:
         REGISTRY: ${{ steps.ecr-login.outputs.registry }}
         REPOSITORY: docker-image-repository
         IMAGE_TAG: ${{ github.sha }}
       run: |
-          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+          docker build -t $REGISTRY/$REPOSITORY:${{ github.sha }} .
+          docker push $REGISTRY/$REPOSITORY:${{ github.sha }}
 
         
 
