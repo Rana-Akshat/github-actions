@@ -26,12 +26,12 @@ jobs:
     - name: Build docker image
       id: docker-build
       env:
-        ECR_REGISTRY: ${{ steps.ecr-login.outputs.registry }}
-        ECR_REPOSITORY: docker-image-repository
-        IMAGE_TAG: latest
+        REGISTRY: ${{ steps.ecr-login.outputs.registry }}
+        REPOSITORY: docker-image-repository
+        IMAGE_TAG: ${{ github.sha }}
       run: |
-          docker build -tag stringArray $ECR_REGISTRY/$ECR_REPOSITORY:latest .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
         
 
