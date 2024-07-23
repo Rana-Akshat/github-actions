@@ -30,7 +30,7 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
           docker build -t docker-image-repository .
-          ddocker tag docker-image-repository:latest 821556825546.dkr.ecr.ap-south-1.amazonaws.com/docker-image-repository:latest
+          docker tag docker-image-repository:latest 821556825546.dkr.ecr.ap-south-1.amazonaws.com/docker-image-repository:latest
           docker push $REGISTRY/$REPOSITORY:latest
 
         
