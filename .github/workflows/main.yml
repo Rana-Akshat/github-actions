@@ -31,8 +31,7 @@ jobs:
       run: |
           docker build -t docker-image-repository .
           docker tag docker-image-repository:latest $REGISTRY/$REPOSITORY:${{ github.sha }}
-          docker tag docker-image-repository:latest $REGISTRY/$REPOSITORY:latest
-          docker push $REGISTRY/$REPOSITORY:latest
+          docker push $REGISTRY/$REPOSITORY
 
         
 
