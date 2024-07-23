@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . /app/
 
-RUN requirements.txt
+RUN -r requirements.txt
 
 EXPOSE 3000
 
