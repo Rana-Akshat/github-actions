@@ -24,7 +24,6 @@ jobs:
        uses: aws-actions/amazon-ecr-login@v1
 
     - name: Build docker image
-      working-directory: ./app
       env:
         REGISTRY: ${{ steps.ecr-login.outputs.registry }}
         REPOSITORY: docker-image-repository
