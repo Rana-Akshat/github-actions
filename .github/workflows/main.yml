@@ -29,7 +29,7 @@ jobs:
         REPOSITORY: docker-image-repository
         IMAGE_TAG: ${{ github.sha }}
       run: |
-          docker build -t $REGISTRY/$REPOSITORY:${{ github.sha }} .
+          docker build --tag $REGISTRY/$REPOSITORY:${{ github.sha }} .
           docker push $REGISTRY/$REPOSITORY:${{ github.sha }}
 
         
