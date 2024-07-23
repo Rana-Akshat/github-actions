@@ -1,4 +1,4 @@
-FROM python:3.13.0b4-bookworm
+FROM python:3.13.0b4-windowsservercore-ltsc2022
 
 WORKDIR /app
 
