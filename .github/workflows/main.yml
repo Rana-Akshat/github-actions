@@ -27,11 +27,10 @@ jobs:
       env:
         REGISTRY: ${{ steps.ecr-login.outputs.registry }}
         REPOSITORY: docker-image-repository
-        IMAGE_TAG: ${{ github.sha }}
       run: |
           docker build -t docker-image-repository .
-          docker tag docker-image-repository:latest 821556825546.dkr.ecr.ap-south-1.amazonaws.com/docker-image-repository:latest
-          docker push 821556825546.dkr.ecr.ap-south-1.amazonaws.com/docker-image-repository:latest
+          docker tag docker-image-repository:latest $REGISTRY/docker-image-repository:latest
+          docker push $REGISTRY/docker-image-repository:latest
 
         
 
